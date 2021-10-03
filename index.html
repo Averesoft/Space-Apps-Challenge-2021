@@ -86,9 +86,44 @@
 
 <p>This website will take in a Google Maps URl, which it will then convert to a latitude and longitude. It can also take a user’s current position and use it as the latitude or longitude. It take these parameters and show a graphical display of the weekly average “available sunshine” using NASA’s database.</p>
 <input type="url" id="my-link" name="my-link">
-      <button id="getCords" onClick="getLink();">Get Data</button>
-      <p>Latitude: <span id="latit"></span></p>
-      <p>Longitude: <span id="longi"></span></p>
+      <button id="getCords" onclick="getLink();">Get Coordinates</button>
+      <p>Latitude: <span id="latit">undefined</span></p>
+      
+
+<p>Longitude: <span id="longi">undefined</span></p><div>
+  
+
+    <p>Data Through Current Location</p><button onclick="getLocation()">Get Data</button>
+
+    <p id="demo"></p>
+    <p id="demo2"></p>
+
+    <script>
+    var x = document.getElementById("demo");
+    var y = document.getElementById("demo2");
+
+    function getLocation() {
+      
+      if (navigator.geolocation) {
+       navigator.geolocation.getCurrentPosition(showPosition,errorCallback);
+      } 
+      else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+
+    function showPosition(position) {
+      
+      x.innerHTML = "Latitude: " + position.coords.latitude + 
+      "<br>Longitude: " + position.coords.longitude;
+      dataDisplay(position.coords.longitude,position.coords.latitude);
+    }
+
+    function errorCallback(err) {
+       x.innerHTML = err.message;
+    }    
+    </script>
+</div>
 
 
         </section>
