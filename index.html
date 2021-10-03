@@ -120,9 +120,10 @@
 	var latitude = position.coords.latitude;
       x.innerHTML = "Latitude: " + position.coords.latitude + 
       "<br>Longitude: " + position.coords.longitude;
+	    alert("Due to a security error in your browser we cannot retrieve the data. Enter https://power.larc.nasa.gov/api/temporal/hourly/point?parameters=WS10M,WD10M,T2MDEW,T2MWET,T2M,V10M,RH2M,PS,PRECTOT,QV2M,U10M&community=SB&longitude="+longitude+"&latitude="+latitude+"&start=20170101&end=20170102&format=JSONhttps://power.larc.nasa.gov/api/temporal/hourly/point?parameters=WS10M,WD10M,T2MDEW,T2MWET,T2M,V10M,RH2M,PS,PRECTOT,QV2M,U10M&community=SB&longitude=0&latitude=0&start=20170101&end=20170102&format=JSON into another tab to access the data.");
+        
       dataDisplay(position.coords.longitude,position.coords.latitude);
-	alert("Due to a security error in your browser we cannot retrieve the data. Enter https://power.larc.nasa.gov/api/temporal/hourly/point?parameters=WS10M,WD10M,T2MDEW,T2MWET,T2M,V10M,RH2M,PS,PRECTOT,QV2M,U10M&community=SB&longitude="+longitude+"&latitude="+latitude+"&start=20170101&end=20170102&format=JSONhttps://power.larc.nasa.gov/api/temporal/hourly/point?parameters=WS10M,WD10M,T2MDEW,T2MWET,T2M,V10M,RH2M,PS,PRECTOT,QV2M,U10M&community=SB&longitude=0&latitude=0&start=20170101&end=20170102&format=JSON into another tab to access the data.");
-        }
+	}
 
     function errorCallback(err) {
        x.innerHTML = err.message;
