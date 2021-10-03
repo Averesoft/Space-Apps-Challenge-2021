@@ -32,7 +32,37 @@
 <!-- link rel="shortcut icon" type="image/x-icon" href="/Space-Apps-Challenge-2021/favicon.ico" -->
 
 <!-- end custom head snippets -->
-
+<script>
+    function getLink() {
+      var url = document.getElementById("my-link").value;
+      var latitude, longitude;
+      for (let i = 0; i < url.length; i++) {
+        if (url.charAt(i) == '@') {
+          i++;
+          var idx, idx1;
+          for (let j = i; j < url.length; j++) {
+            if (url.charAt(j) == ',') {
+              idx = j;
+              break;
+            }
+          }
+          latitude = url.substring(i, idx);
+          idx++;
+          for (let k = idx; k < url.length; k++) {
+            if (url.charAt(k) == ',') {
+              idx1 = k;
+              break;
+            }
+          }
+          longitude = url.substring(idx, idx1);
+          break;
+        }
+      }
+      console.log(latitude + " " + longitude);
+      document.getElementById("latit").innerHTML = latitude;
+      document.getElementById("longi").innerHTML = longitude;
+    }
+  </script>
   </head>
 
   <body>
@@ -55,6 +85,11 @@
 <p>This is team Ingenii Solis’s submission to the 2021 NASA Space Apps Challenge! We are submitting to the “You Are My Sunshine” Challenge.</p>
 
 <p>This website will take in a Google Maps URl, which it will then convert to a latitude and longitude. It can also take a user’s current position and use it as the latitude or longitude. It take these parameters and show a graphical display of the weekly average “available sunshine” using NASA’s database.</p>
+<input type="url" id="my-link" name="my-link">
+      <button id="getCords" onClick="getLink();">Get Coordinates</button>
+      <p>"Latitude: " <span id="latit"></span></p>
+      <p>"Longitude: " <span id="longi"></span></p>
+
 
         </section>
 
